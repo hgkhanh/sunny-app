@@ -1,0 +1,16 @@
+config/dev.ts
+
+#webpack
+dist/
+
+# OS X
+.DS_Store*
+Icon?
+._*
+
+# npm
+node_modules
+package-lock.json
+*.log
+*.gz
+.env
