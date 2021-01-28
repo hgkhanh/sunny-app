@@ -3,6 +3,12 @@ import { Router, Request, Response } from 'express';
 
 const authRoute = Router();
 authRoute.get(
+    '/auth',
+    (req: Request, res: Response) => {
+        res.json('/auth');
+    }
+);
+authRoute.get(
     '/auth/google',
     passport.authenticate('google', {
         scope: ['profile', 'email']
