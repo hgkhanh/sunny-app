@@ -19,7 +19,7 @@ authRoute.get(
     '/auth/google/callback',
     passport.authenticate('google'),
     (req: Request, res: Response) => {
-        res.redirect('/');
+        res.redirect('/dashboard');
     }
 );
 
