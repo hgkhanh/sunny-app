@@ -1,17 +1,12 @@
 import express from 'express';
 import authRoute from './routes/authRoutes';
 import Passport from './services/passport';
-import mongoose from 'mongoose';
-import config from './config';
-
-mongoose.connect(config.mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+import Mongoose from './services/mongoose';
 
 const app = express();
 const port = 5000;
 
+Mongoose.init();
 Passport.init(app);
 
 app.use('/', authRoute);
