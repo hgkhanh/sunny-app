@@ -13,6 +13,9 @@ import reduxThunk from 'redux-thunk';
 import reportWebVitals from './reportWebVitals';
 
 import reducers from './reducers';
+
+console.log(process.env);
+
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(

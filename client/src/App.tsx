@@ -6,13 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Header from './components/Header';
 import Home from './components/Home';
+import Dashboard from './components/Dashboard';
 import { fetchUser } from './actions';
 
 
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
-  const Dashboard = () => <h2>Dashboard</h2>
 
   useEffect(() => {
     dispatch(fetchUser());

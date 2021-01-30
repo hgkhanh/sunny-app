@@ -17,6 +17,7 @@
     "@types/react-router-dom": "^5.1.7",
     "antd": "^4.11.2",
     "axios": "^0.21.1",
+    "formik": "^2.2.6",
     "framer-motion": "^3.2.2-rc.1",
     "http-proxy-middleware": "^1.0.6",
     "react": "^17.0.1",

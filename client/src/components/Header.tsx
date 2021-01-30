@@ -3,12 +3,9 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useColorMode, Box, Heading, Flex, Text, Button, IconButton } from '@chakra-ui/react';
 import { FaGoogle, FaMoon, FaSun } from 'react-icons/fa';
-import { IconType } from 'react-icons/lib';
 
 interface Props {
 }
-
-
 
 const Header: React.FC<Props> = (props) => {
     const { colorMode, toggleColorMode } = useColorMode();
@@ -24,8 +21,8 @@ const Header: React.FC<Props> = (props) => {
 
     const DarkModeButton = ({ icon }: any) => (
         <IconButton
-            variant="ghost"
-            aria-label="Switch to dark mode"
+            variant='ghost'
+            aria-label='Switch to dark mode'
             onClick={toggleColorMode}
             _focus={{
                 boxShadow: 'none'
