@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Router, Request, Response } from 'express';
+import { secondsToDateTime } from '../utils';
 
 const weatherRoute = Router();
 weatherRoute.get(
@@ -19,11 +20,23 @@ weatherRoute.get(
                 + `?appid=${process.env.WEATHER_API_KEY}&lat=${lat}&lon=${lon}`
                 + `&exclude=current,minutely,hourly,alerts&units=metric`;
             const response = await axios.get(weatherQueryURL);
+
             console.log(response);
             if (response.data) {
+                // Process data
+                let dailyData = response.data.daily.map(dataPoint => {
+                    return {
+                        data: secondsToDateTime(dataPoint.dt),
+                        temp: dataPoint.temp.day,
+                        humidity: dataPoint.humidity,
+                        wind: dataPoint.wind_speed,
+                        weather: dataPoint.weather[0].main,
+                        description: dataPoint.weather[0].description
+                    }
+                });
                 const result = {
                     city: cityName,
-                    ...response.data
+                    daily: dailyData
                 }
                 return res.status(200).json(result);
             }
