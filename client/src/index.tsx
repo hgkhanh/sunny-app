@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-import { ChakraProvider, CSSReset } from '@chakra-ui/react';
+import { ChakraProvider, CSSReset, ColorModeScript } from '@chakra-ui/react';
+import theme from './utils/theme';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -16,9 +17,10 @@ const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Provider store={store}>
         <CSSReset />
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <App />
       </Provider>
     </ChakraProvider>

@@ -1,22 +1,37 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Box, Heading, Flex, Text, Button } from '@chakra-ui/react';
-import { FaGoogle } from 'react-icons/fa';
+import { useColorMode, Box, Heading, Flex, Text, Button, IconButton } from '@chakra-ui/react';
+import { FaGoogle, FaMoon, FaSun } from 'react-icons/fa';
+import { IconType } from 'react-icons/lib';
 
 interface Props {
 }
 
-const MenuItems = ({ children }: any) => (
-    <Text mt={{ base: 4, md: 0 }} mr={6} display='block'>
-        {children}
-    </Text>
-);
+
 
 const Header: React.FC<Props> = (props) => {
+    const { colorMode, toggleColorMode } = useColorMode();
     const [show, setShow] = React.useState(false);
     const handleToggle = () => setShow(!show);
     const auth = useSelector((state: any) => state.auth);
+
+    const MenuItems = ({ children }: any) => (
+        <Text mt={{ base: 4, md: 0 }} mr={6} display='block'>
+            {children}
+        </Text>
+    );
+
+    const DarkModeButton = ({ icon }: any) => (
+        <IconButton
+            variant="ghost"
+            aria-label="Switch to dark mode"
+            onClick={toggleColorMode}
+            _focus={{
+                boxShadow: 'none'
+            }}
+            icon={icon} />
+    );
 
     const renderContent = () => {
         switch (auth) {
@@ -86,13 +101,30 @@ const Header: React.FC<Props> = (props) => {
                     <MenuItems>About</MenuItems>
                 </Link>
             </Box>
+
+            {/* Dark Mode Toggle */}
             <Box
                 display={{ sm: show ? 'block' : 'none', md: 'block' }}
                 mt={{ base: 4, md: 0 }}
+            >
+                {colorMode === 'light' ? (
+                    <DarkModeButton icon={<FaMoon />} />
+                ) : (
+                        <DarkModeButton icon={<FaSun />} />
+                    )
+                }
+            </Box>
+
+            {/* Login Button */}
+            <Box
+                display={{ sm: show ? 'block' : 'none', md: 'block' }}
+                mt={{ base: 4, md: 0 }}
+                ml={4}
             >                {renderContent()}
             </Box>
         </Flex>
     )
 }
+
 
 export default Header;
