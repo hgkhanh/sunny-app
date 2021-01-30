@@ -1,11 +1,21 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Box, Heading, Flex, Text, Button } from '@chakra-ui/react';
+import { FaGoogle } from 'react-icons/fa';
 
 interface Props {
 }
-const Header: React.FC<Props> = ({ }) => {
-    const state = useSelector((state: any) => state);
+
+const MenuItems = ({ children }: any) => (
+    <Text mt={{ base: 4, md: 0 }} mr={6} display='block'>
+        {children}
+    </Text>
+);
+
+const Header: React.FC<Props> = (props) => {
+    const [show, setShow] = React.useState(false);
+    const handleToggle = () => setShow(!show);
     const auth = useSelector((state: any) => state.auth);
 
     const renderContent = () => {
@@ -13,26 +23,75 @@ const Header: React.FC<Props> = ({ }) => {
             case null:
                 return;
             case false:
-                return <li><a href="/auth/google">Login to Google</a></li>;
+                return (
+                    <Button bg='transparent' border='1px' leftIcon={<FaGoogle />}>
+                        <a href='/auth/google'>Login to Google</a>
+                    </Button>
+                )
             default:
-                return <li><a href="/api/logout">Logout</a></li>;
+                return (
+                    <Button bg='transparent' border='1px'>
+                        <a href='/api/logout'>Logout</a>
+                    </Button >
+                )
         }
     }
     return (
-        <nav>
-            <div>
-                <Link
-                    to={auth ? '/dashboard' : '/'}
-                    className="left brand-logo"
+        <Flex
+            as='nav'
+            align='center'
+            justify='space-between'
+            wrap='wrap'
+            padding='1.5rem'
+            bg='cyan.900'
+            color='white'
+            {...props}
+        >
+            <Link
+                to={auth ? '/dashboard' : '/'}
+            >
+                <Flex align='center' mr={5}>
+                    <Heading as='h1' size='lg' letterSpacing={'-.1rem'}>
+                        Sunny
+                        </Heading>
+                </Flex>
+            </Link>
+            {/* Hamburger menu */}
+            <Box display={{ base: 'block', md: 'none' }} onClick={handleToggle}>
+                <svg
+                    fill='white'
+                    width='12px'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
                 >
-                    {JSON.stringify(state)}
-                </Link>
-                <ul className="right">
-                    {renderContent()}
-                </ul>
-            </div>
-        </nav>
+                    <title>Menu</title>
+                    <path d='M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z' />
+                </svg>
+            </Box>
 
+            <Box
+                display={{ sm: show ? 'block' : 'none', md: 'flex' }}
+                width={{ sm: 'full', md: 'auto' }}
+                alignItems='center'
+                flexGrow={1}
+            >
+
+                <Link to='/'>
+                    <MenuItems>Home</MenuItems>
+                </Link>
+                <Link to='/dashboard'>
+                    <MenuItems>Dashboard</MenuItems>
+                </Link>
+                <Link to='/'>
+                    <MenuItems>About</MenuItems>
+                </Link>
+            </Box>
+            <Box
+                display={{ sm: show ? 'block' : 'none', md: 'block' }}
+                mt={{ base: 4, md: 0 }}
+            >                {renderContent()}
+            </Box>
+        </Flex>
     )
 }
 

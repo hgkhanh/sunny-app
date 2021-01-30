@@ -1,8 +1,6 @@
-import React from 'react';
-
-const Landing = () => {
+const Home = () => {
     return (
-        <div style={{ textAlign: 'center' }}>
+        <div>
             <h1>
                 Sunny
             </h1>
@@ -11,4 +9,4 @@ const Landing = () => {
     )
 };
 
-export default Landing;
+export default Home;

@@ -2,9 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+
+import { ChakraProvider, CSSReset } from '@chakra-ui/react';
+
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
+
 import reportWebVitals from './reportWebVitals';
 
 import reducers from './reducers';
@@ -12,9 +16,12 @@ const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <ChakraProvider>
+      <Provider store={store}>
+        <CSSReset />
+        <App />
+      </Provider>
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
