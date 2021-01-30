@@ -2,7 +2,7 @@ import { Application } from 'express';
 import passport from 'passport';
 import cookieSession from 'cookie-session';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import config from '../config';
+
 import User from '../models/User';
 
 class Passport {
@@ -10,7 +10,7 @@ class Passport {
     app.use(
       cookieSession({
         maxAge: 30 * 24 * 60 * 60 * 1000, // 30days
-        keys: [config.cookieKey] // a random key to encrypt our cookie
+        keys: [process.env.COOKIE_KEY] // a random key to encrypt our cookie
       })
     );
     app = app.use(passport.initialize());
@@ -30,8 +30,8 @@ class Passport {
     passport.use(
       new GoogleStrategy(
         {
-          clientID: config.googleClientID,
-          clientSecret: config.googleClientSecret,
+          clientID: process.env.GOOGLE_CLIENT_ID,
+          clientSecret: process.env.GOOGLE_CLIENT_SECRET,
           callbackURL: '/auth/google/callback',
           proxy: true
         },

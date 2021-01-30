@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
-import config from '../config';
 
 class Mongoose {
     public init() {
-        mongoose.connect(config.mongoURI, {
+        mongoose.connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
