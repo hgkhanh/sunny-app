@@ -27,7 +27,6 @@ const SearchBar = () => {
             initialValues={{ name: 'Helsinki' }}
             onSubmit={(values) => handleFormSubmit(values.name)}
         >
-
             <Form>
                 <Field name='name' validate={validateName}>
                     {({ field, form }: any) => (
@@ -55,7 +54,6 @@ const SearchBar = () => {
                         </FormControl>
                     )}
                 </Field>
-
             </Form>
         </Formik>
     )

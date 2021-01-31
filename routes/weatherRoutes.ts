@@ -21,12 +21,11 @@ weatherRoute.get(
                 + `&exclude=current,minutely,hourly,alerts&units=metric`;
             const response = await axios.get(weatherQueryURL);
 
-            console.log(response);
             if (response.data) {
                 // Process data
                 let dailyData = response.data.daily.map(dataPoint => {
                     return {
-                        data: secondsToDateTime(dataPoint.dt),
+                        date: secondsToDateTime(dataPoint.dt),
                         temp: dataPoint.temp.day,
                         humidity: dataPoint.humidity,
                         wind: dataPoint.wind_speed,

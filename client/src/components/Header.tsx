@@ -91,10 +91,12 @@ const Header: React.FC<Props> = (props) => {
                 <Link to='/'>
                     <MenuItems>Home</MenuItems>
                 </Link>
-                <Link to='/dashboard'>
-                    <MenuItems>Dashboard</MenuItems>
-                </Link>
-                <Link to='/'>
+                {auth &&
+                    <Link to='/dashboard'>
+                        <MenuItems>Dashboard</MenuItems>
+                    </Link>
+                }
+                <Link to='/about'>
                     <MenuItems>About</MenuItems>
                 </Link>
             </Box>

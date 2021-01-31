@@ -1,9 +1,9 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
-const Home = () => {
+const About = () => {
     return (
         <Flex direction='column' align='center' m={16}>
             <Heading as='h1' p={4}>
-                Sunny
+                About
             </Heading>
             <Text>
                 Follow weather at your location
@@ -12,4 +12,4 @@ const Home = () => {
     )
 };
 
-export default Home;
+export default About;
