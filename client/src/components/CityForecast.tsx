@@ -1,5 +1,5 @@
 import { WeatherThemeProvider, Sunny, Cloudy, Rain, Snow } from 'weather-styled-icon';
-import { useColorMode, Heading, Text, Box, Flex } from '@chakra-ui/react';
+import { useColorMode, Stack, Heading, Text, Box, Flex } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
 
@@ -30,15 +30,19 @@ const renderDay = ({ date, temp, humidity, wind, weather, description }: RenderD
     const dayOfWeek = dateObject.format('dddd');
     const dayAndMonth = dateObject.format('MMM D');
     return (
-        <Box>
-            <Text>{dayOfWeek}</Text>
-            <Text>{dayAndMonth}</Text>
-            <Text>{parseInt(temp)}°C</Text>
-            <Text>{humidity}%</Text>
-            <Text>{parseInt(wind)}m/s</Text>
+        <Stack direction='column' align='center'>
+            <Box align='center'>
+                <Text >{dayOfWeek}</Text>
+                <Text >{dayAndMonth}</Text>
+            </Box>
+            <Box>
+                {weatherIcon}
+            </Box>
+            <Text fontSize='2xl'>{parseInt(temp)}°C</Text>
+            {/* <Text>{humidity}%</Text>
+            <Text>{parseInt(wind)}m/s</Text> */}
             <Text>{description}</Text>
-            {weatherIcon}
-        </Box>
+        </Stack>
     )
 }
 
@@ -50,9 +54,9 @@ const CityForecast = () => {
     };
     return (
         <WeatherThemeProvider theme={myCustomTheme}>
-            WeatherList
+            <Heading as='h1'>CityForecast</Heading>
             <Heading as='h2'>{weather.city}</Heading>
-            <Flex>
+            <Flex m={4}>
                 {weather && weather.daily && weather.daily.slice(0, 5).map((day: RenderDayProps) => renderDay(day))}
             </Flex>
         </WeatherThemeProvider>

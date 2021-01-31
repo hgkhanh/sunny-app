@@ -82,8 +82,8 @@ const Header: React.FC<Props> = (props) => {
             </Box>
 
             <Box
-                display={{ sm: show ? 'block' : 'none', md: 'flex' }}
-                width={{ sm: 'full', md: 'auto' }}
+                display={{ base: show ? 'block' : 'none', md: 'flex' }}
+                width={{ base: 'full', md: 'auto' }}
                 alignItems='center'
                 flexGrow={1}
             >
@@ -103,7 +103,7 @@ const Header: React.FC<Props> = (props) => {
 
             {/* Dark Mode Toggle */}
             <Box
-                display={{ sm: show ? 'block' : 'none', md: 'block' }}
+                display={{ base: show ? 'block' : 'none', md: 'block' }}
                 mt={{ base: 4, md: 0 }}
             >
                 {colorMode === 'light' ? (
@@ -116,7 +116,7 @@ const Header: React.FC<Props> = (props) => {
 
             {/* Login Button */}
             <Box
-                display={{ sm: show ? 'block' : 'none', md: 'block' }}
+                display={{ base: show ? 'block' : 'none', md: 'block' }}
                 mt={{ base: 4, md: 0 }}
                 ml={4}
             >                {renderContent()}

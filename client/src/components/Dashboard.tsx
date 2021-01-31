@@ -1,13 +1,21 @@
 import SearchBar from './SearchBar';
 import CityForecast from './CityForecast';
+import { Flex, Box } from '@chakra-ui/react';
 
 const Dashboard = () => {
     return (
-        <div>
-            Dashboard
-            <SearchBar />
-            <CityForecast />
-        </div>
+        <Flex
+            direction="column"
+            align="center"
+            maxW={{ xl: "1200px" }}
+            margin='0 auto'>
+            <Box m={4}>
+                <SearchBar />
+            </Box>
+            <Box m={4}>
+                <CityForecast />
+            </Box>
+        </Flex >
     )
 };
 
