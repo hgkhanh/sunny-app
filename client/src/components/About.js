@@ -1,4 +1,5 @@
 import { Flex, Heading, Text } from '@chakra-ui/react';
+
 const About = () => {
     return (
         <Flex direction='column' align='center' m={16}>

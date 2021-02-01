@@ -5,7 +5,7 @@ import {
     FormErrorMessage
 } from '@chakra-ui/react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
-import { fetchWeather } from '../actions';
+import { fetchWeather } from '../../actions';
 import { useDispatch } from 'react-redux';
 
 const SearchBar = () => {

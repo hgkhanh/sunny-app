@@ -1,5 +1,5 @@
-declare module "weather-styled-icon" {
-    import * as React from "react";
+declare module 'weather-styled-icon' {
+    import * as React from 'react';
 
     class Sunny extends React.Component<SunnyProps, any> { }
     class Rain extends React.Component<RainProps, any> { }

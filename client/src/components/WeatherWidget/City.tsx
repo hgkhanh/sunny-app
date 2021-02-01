@@ -5,7 +5,7 @@ import {
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaBell } from 'react-icons/fa';
-import { followCity, unfollowCity } from '../actions';
+import { followCity, unfollowCity } from '../../actions';
 import { Fragment } from 'react';
 import DayWeather, { DayWeatherProps } from './DayWeather';
 

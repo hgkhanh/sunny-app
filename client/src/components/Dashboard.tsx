@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Flex, Heading, Text, Spinner, useStyleConfig } from '@chakra-ui/react';
-import Weather from './Weather';
+import { Flex, Heading, Text, Spinner } from '@chakra-ui/react';
+import Weather from './WeatherWidget/Weather';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchWeather, clearWeatherData } from '../actions';
@@ -11,13 +11,6 @@ const Dashboard = () => {
     const user = useSelector((state: any) => state.user);
     const weather = useSelector((state: any) => state.weather);
     const dispatch = useDispatch();
-
-    const flexStyle = {
-        flexDirection: 'column',
-        alignItems: 'center',
-        maxWidth: '1200px',
-        margin: '0 auto',
-    };
 
     useEffect(() => {
         dispatch(clearWeatherData());
@@ -37,52 +30,42 @@ const Dashboard = () => {
                 setError(false);
             }
         }
-    }, [weather])
+    }, [weather]);
 
-    if (isLoading) {
-        return (
-            <Flex sx={flexStyle}>
-                <Heading as='h1' p={4}>
-                    Dashboard
-                </Heading>
-                <Spinner size="xl" />
-            </Flex>
-        )
-    }
+    const renderContent = () => {
+        if (isLoading) {
+            return (<Spinner size='xl' />)
+        }
 
-    if (isError) {
-        return (
-            <Flex sx={flexStyle}>
-                <Heading as='h1' p={4}>
-                    Dashboard
-                </Heading>
-                <Text>Some thing went wrong :(</Text>
-            </Flex>
-        )
-    }
+        if (isError) {
+            return (<Text>Some thing went wrong :(</Text>)
+        }
 
-    if (weather.data.length === 0) {
-        return (
-            <Flex sx={flexStyle}>
-                <Heading as='h1' p={4}>
-                    Dashboard
-                </Heading>
+        if (weather && weather.data && weather.data.length === 0) {
+            return (
                 <Text>
                     You are not following any city.
-                Add some city from <Link to='/'>Home</Link>
+                    Add some city from <Link to='/'>Home</Link>
                 </Text>
-            </Flex>
-        )
+            )
+        }
+        return (<Weather />);
     }
+
 
 
 
     return (
-        <Flex sx={flexStyle}>
+        <Flex
+            direction='column'
+            align='center'
+            maxW={{ xl: '1200px' }}
+            my={8}
+            mx={'auto'}>
             <Heading as='h1' p={4}>
                 Dashboard
             </Heading>
-            <Weather />
+            {renderContent()}
         </Flex >
     )
 };
