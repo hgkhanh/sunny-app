@@ -1,12 +1,12 @@
 import {
-    Text, Flex, Box, Input, Button,
+    Heading, Flex, Box, Input, Button,
     FormControl,
     FormLabel,
     FormErrorMessage
 } from '@chakra-ui/react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { fetchWeather } from '../actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const SearchBar = () => {
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const SearchBar = () => {
     }
 
     const handleFormSubmit = (cityName: string) => {
-        dispatch(fetchWeather(cityName));
+        dispatch(fetchWeather([cityName]));
     }
 
     return (
@@ -32,7 +32,9 @@ const SearchBar = () => {
                     {({ field, form }: any) => (
                         <FormControl isInvalid={form.errors.name && form.touched.name}>
                             <Flex direction='column' align='center'>
-                                <FormLabel htmlFor='name'>City</FormLabel>
+                                <FormLabel htmlFor='name'>
+                                    <Heading as='h2' fontSize='xl'>City</Heading>
+                                </FormLabel>
 
                                 <Flex justify='center' align='flex-start'>
                                     <Box>

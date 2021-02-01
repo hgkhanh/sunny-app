@@ -12,12 +12,10 @@ import { fetchUser } from './actions';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
-  const auth = useSelector((state: any) => state.auth);
 
   useEffect(() => {
     dispatch(fetchUser());
   }, []);
-
   return (
     <div className="container">
       <BrowserRouter>
@@ -25,9 +23,7 @@ const App: React.FC = () => {
           <Header />
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
-          {auth &&
-            <Route path="/dashboard" component={Dashboard} />
-          }
+          <Route path="/dashboard" component={Dashboard} />
         </div>
       </BrowserRouter>
     </div>

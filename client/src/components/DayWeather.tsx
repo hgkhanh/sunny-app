@@ -1,0 +1,62 @@
+import {
+    WeatherThemeProvider,
+    Sunny, Cloudy, Rain, Snow
+} from 'weather-styled-icon';
+import { useColorMode, Text, Box, Flex } from '@chakra-ui/react';
+import moment from 'moment';
+
+export interface DayWeatherProps {
+    date: string,
+    temp: string,
+    humidity: string,
+    wind: string,
+    weather: string,
+    description: string
+}
+
+const DayWeather = ({ date, temp, weather, description }: DayWeatherProps, size: number, cityName: string) => {
+    let weatherIcon;
+    const { colorMode } = useColorMode();
+    const myCustomTheme = {
+        backgroundColor: colorMode === 'light' ? '#ffffff' : '#1a202c',
+    };
+    switch (weather) {
+        case 'Clouds':
+            weatherIcon = <Cloudy size={size} />
+            break;
+        case 'Snow':
+            weatherIcon = <Snow size={size} />
+            break;
+        case 'Rainy':
+            weatherIcon = <Rain size={size} />
+            break;
+        default:
+            weatherIcon = <Sunny size={size} />
+    }
+    const dateObject = moment(new Date(date));
+    const dayOfWeek = dateObject.format('dddd');
+    const dayAndMonth = dateObject.format('MMM D');
+    return (
+        <WeatherThemeProvider theme={myCustomTheme} key={`${cityName}-${dayOfWeek}`}>
+            <Flex
+                direction={{ base: 'row', md: 'column' }} align='center'
+                px={{ base: 0, md: 4 }}>
+                <Box align='center' width={{ base: '120px', md: 'auto' }}
+                    pr={{ base: 4, md: 0 }}>
+                    <Text >{dayOfWeek}</Text>
+                    <Text >{dayAndMonth}</Text>
+                </Box>
+                <Box width={{ base: '50px', md: 'auto' }}>
+                    {weatherIcon}
+                </Box>
+                <Text width={{ base: '100px', md: 'auto' }} align='right'
+                    pr={{ base: '4', md: '0' }} fontSize='2xl'>{parseInt(temp)}°C</Text>
+                <Text
+                    display={{ base: 'none', sm: 'block' }}
+                    pr={{ base: '4', md: '0' }}>{description}</Text>
+            </Flex>
+        </WeatherThemeProvider>
+    )
+}
+
+export default DayWeather;

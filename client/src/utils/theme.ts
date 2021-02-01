@@ -1,9 +1,18 @@
 import { extendTheme } from '@chakra-ui/react'
 
-const config = {
-  initialColorMode: 'light',
-  useSystemColorMode: false,
-}
+const theme = extendTheme({
+  config: {
+    initialColorMode: 'light',
+    useSystemColorMode: false,
+  },
+  textStyles: {
+    h1: {
+      textTransform: 'capitalize'
+    },
+    h2: {
+      textTransform: 'capitalize'
+    }
+  }
+});
 
-const theme = extendTheme({ config })
 export default theme

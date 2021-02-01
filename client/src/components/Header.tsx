@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import { useColorMode, Box, Heading, Flex, Text, Button, IconButton } from '@chakra-ui/react';
 import { FaGoogle, FaMoon, FaSun } from 'react-icons/fa';
 
-interface Props {
+interface IHeader {
 }
 
-const Header: React.FC<Props> = (props) => {
+const Header: React.FC<IHeader> = () => {
     const { colorMode, toggleColorMode } = useColorMode();
     const [show, setShow] = React.useState(false);
     const handleToggle = () => setShow(!show);
-    const auth = useSelector((state: any) => state.auth);
+    const user = useSelector((state: any) => state.user);
 
     const MenuItems = ({ children }: any) => (
         <Text mt={{ base: 4, md: 0 }} mr={6} display='block'>
@@ -31,9 +31,8 @@ const Header: React.FC<Props> = (props) => {
     );
 
     const renderContent = () => {
-        switch (auth) {
-            case null:
-                return;
+        switch (user) {
+            case undefined:
             case false:
                 return (
                     <Button bg='transparent' border='1px' leftIcon={<FaGoogle />}>
@@ -57,10 +56,9 @@ const Header: React.FC<Props> = (props) => {
             padding='1.5rem'
             bg='cyan.900'
             color='white'
-            {...props}
         >
             <Link
-                to={auth ? '/dashboard' : '/'}
+                to={user ? '/dashboard' : '/'}
             >
                 <Flex align='center' mr={5}>
                     <Heading as='h1' size='lg' letterSpacing={'-.1rem'}>
@@ -91,7 +89,7 @@ const Header: React.FC<Props> = (props) => {
                 <Link to='/'>
                     <MenuItems>Home</MenuItems>
                 </Link>
-                {auth &&
+                {user &&
                     <Link to='/dashboard'>
                         <MenuItems>Dashboard</MenuItems>
                     </Link>

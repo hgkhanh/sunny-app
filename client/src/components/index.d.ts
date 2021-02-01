@@ -29,7 +29,7 @@ declare module "weather-styled-icon" {
     }
 
     export interface WeatherThemeProviderProps {
-        theme: ThemeObject
+        theme?: ThemeObject
     }
 
     interface ThemeObject {
@@ -42,4 +42,3 @@ declare module "weather-styled-icon" {
         backgroundColor?: string,
     }
 }
-
