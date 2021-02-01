@@ -1,10 +1,15 @@
-import * as mongoose from 'mongoose';
-const { Schema } = mongoose;
+import mongoose, { Schema, Document } from 'mongoose';
 
 const userSchema = new Schema({
-    googleId: String
+    googleId: String,
+    cities: [String]
 });
 
 const User = mongoose.model('users', userSchema);
+
+export interface IUser extends Document {
+    googleId: string,
+    cities: Array<string>
+}
 
 export default User;

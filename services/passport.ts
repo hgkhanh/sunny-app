@@ -21,6 +21,7 @@ class Passport {
     });
 
     passport.deserializeUser((id, done) => {
+      console.log('deserializeUser');
       User.findById(id).then((user) => {
         done(null, user);
       });
@@ -36,6 +37,7 @@ class Passport {
           proxy: true
         },
         async (accessToken, refreshToken, profile, done) => {
+          console.log('passport.use middle function');
           const existingUser = await User.findOne({ googleId: profile.id })
           console.log('existingUser');
           console.log(existingUser);
@@ -45,7 +47,10 @@ class Passport {
             return done(null, existingUser);
           }
 
-          const user = await new User({ googleId: profile.id }).save()
+          const user = await new User({ 
+            googleId: profile.id ,
+            cities: []
+          }).save()
 
           console.log('new user');
           done(null, user);
