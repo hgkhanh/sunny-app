@@ -1,7 +1,7 @@
 import { Flex, Box, Heading, Text } from '@chakra-ui/react';
 import City, { CityWeatherData } from './City';
 import { useSelector } from 'react-redux';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 
 const Weather = () => {
     const weather = useSelector((state: any) => state.weather);
@@ -12,6 +12,7 @@ const Weather = () => {
             </Text>
         )
     }
+   
     return (
         <Fragment>
             { weather.data && weather.data.length > 0 &&

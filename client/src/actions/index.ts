@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {
+    CLEAR_WEATHER_DATA,
     FETCH_USER, FETCH_WEATHER,
     FOLLOW_CITY, UNFOLLOW_CITY
 } from './types';
@@ -38,6 +39,10 @@ export const fetchWeather = (cities: Array<string>): ThunkAction<void, typeof in
             data: result
         }
     });
+}
+
+export const clearWeatherData = (): ThunkAction<void, typeof initialState, null, Action<any>> => async dispatch => {
+    dispatch({ type: CLEAR_WEATHER_DATA  });
 }
 
 export const followCity = (city: string): ThunkAction<void, typeof initialState, null, Action<any>> => async dispatch => {

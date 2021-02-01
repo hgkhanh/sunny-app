@@ -3,7 +3,7 @@ import { Flex, Heading, Text, Spinner, useStyleConfig } from '@chakra-ui/react';
 import Weather from './Weather';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchWeather } from '../actions';
+import { fetchWeather, clearWeatherData } from '../actions';
 
 const Dashboard = () => {
     const [isLoading, setLoading] = useState(true);
@@ -18,6 +18,10 @@ const Dashboard = () => {
         maxWidth: '1200px',
         margin: '0 auto',
     };
+
+    useEffect(() => {
+        dispatch(clearWeatherData());
+    }, []);
 
     useEffect(() => {
         if (user && user.cities) {

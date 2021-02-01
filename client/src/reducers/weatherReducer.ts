@@ -1,5 +1,4 @@
-import { FETCH_WEATHER } from '../actions/types';
-import { LOCATION_CHANGE } from 'react-router-redux';
+import { FETCH_WEATHER, CLEAR_WEATHER_DATA } from '../actions/types';
 
 
 export default function (state = [], action: any) {
@@ -8,7 +7,8 @@ export default function (state = [], action: any) {
             console.log('Reducer fetch_weather');
             console.log(action.payload);
             return action.payload || false;
-        case LOCATION_CHANGE:
+        case CLEAR_WEATHER_DATA:
+            console.log('Reducer clear_weather_data');
             return false;
         default:
             return state;
