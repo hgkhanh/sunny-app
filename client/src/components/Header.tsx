@@ -6,6 +6,9 @@ import { FaGoogle, FaMoon, FaSun } from 'react-icons/fa';
 
 interface IHeader {
 }
+/**
+ * Page Header, Visible across all page
+ */
 
 const Header: React.FC<IHeader> = () => {
     const { colorMode, toggleColorMode } = useColorMode();
@@ -35,15 +38,19 @@ const Header: React.FC<IHeader> = () => {
             case undefined:
             case false:
                 return (
-                    <Button bg='transparent' border='1px' leftIcon={<FaGoogle />}>
-                        <a href='/auth/google'>Login to Google</a>
-                    </Button>
+                    <a href='/auth/google'>
+                        <Button bg='transparent' border='1px' leftIcon={<FaGoogle />}>
+                            Login to Google
+                        </Button>
+                    </a>
                 )
             default:
                 return (
-                    <Button bg='transparent' border='1px'>
-                        <a href='/api/logout'>Logout</a>
-                    </Button >
+                    <a href='/api/logout'>
+                        <Button bg='transparent' border='1px'>
+                            <a href='/api/logout'>Logout</a>
+                        </Button >
+                    </a>
                 )
         }
     }

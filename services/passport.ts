@@ -37,16 +37,19 @@ class Passport {
           proxy: true
         },
         async (accessToken, refreshToken, profile, done) => {
+          // Check if user exist in db
           console.log('passport.use middle function');
           const existingUser = await User.findOne({ googleId: profile.id })
           console.log('existingUser');
           console.log(existingUser);
+          // If exist, return existing user
           if (existingUser) {
             console.log('existing user');
             console.log(existingUser);
             return done(null, existingUser);
           }
 
+          // If not, create new user
           const user = await new User({ 
             googleId: profile.id ,
             cities: []

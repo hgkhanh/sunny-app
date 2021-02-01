@@ -3,6 +3,21 @@ import City, { CityWeatherData } from './City';
 import { useSelector } from 'react-redux';
 import { Fragment, useEffect } from 'react';
 
+/**
+ * Components show all weather data from redux global 'weather' state
+ * Each city will be rendered by component 'City'
+ * @example
+ * weather = {
+ *  status: 'success',
+ *  data: [
+ *      {
+ *          city: 'helsinki',
+ *          daily: Array<DayWeatherProps>
+ *      }
+ *  ]
+ * }
+ */
+
 const Weather = () => {
     const weather = useSelector((state: any) => state.weather);
     if (weather.status === 'error') {

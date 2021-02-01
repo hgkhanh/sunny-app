@@ -11,9 +11,16 @@ import DayWeather, { DayWeatherProps } from './DayWeather';
 
 export interface CityWeatherData {
     city: string
+    /**
+     * Array of weather data by day
+     */
     daily: Array<DayWeatherProps>
 }
 
+/**
+ * Show 5 days weather forecast of one city
+ * Each day will be rendered by component 'DayWeather'
+ */
 const City = ({ data }: { data: CityWeatherData }) => {
     const dispatch = useDispatch();
     const user = useSelector((state: any) => state.user);

@@ -8,6 +8,11 @@ import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { fetchWeather } from '../../actions';
 import { useDispatch } from 'react-redux';
 
+/**
+ * A search bar to search for city weather
+ * Query '/api/weather?city=' on search
+ */
+
 const SearchBar = () => {
     const dispatch = useDispatch();
     const validateName = (value: string) => {

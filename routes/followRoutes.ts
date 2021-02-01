@@ -11,6 +11,14 @@ interface FollowRequest extends Request {
     user: IUser
 }
 
+/**
+* Subscribe current user to a city weather
+* By adding city name to user.cities array
+* @name post/api/follow/create
+* @function 
+* @memberof module:routers/followRoutes
+* @param req.query.city {String} The city name.
+*/
 followRoute.post(
     '/api/follow/create', async (req: FollowRequest, res: Response) => {
         const updatedUser = await User.findByIdAndUpdate(
@@ -22,6 +30,14 @@ followRoute.post(
     }
 );
 
+/**
+* Unsubscribe current user to a city weather
+* By removing city name from user.cities array
+* @name post/api/follow/destroy
+* @function 
+* @memberof module:routers/followRoutes
+* @param req.query.city {String} The city name.
+*/
 followRoute.post(
     '/api/follow/destroy', async (req: FollowRequest, res: Response) => {
         const updatedUser = await User.findByIdAndUpdate(

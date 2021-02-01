@@ -1,5 +1,7 @@
 import { Flex, Heading, Text } from '@chakra-ui/react';
-
+/**
+ * Main Component for route /About
+ */
 const About = () => {
     return (
         <Flex direction='column' align='center' m={16}>

@@ -6,13 +6,48 @@ import { useColorMode, Text, Box, Flex } from '@chakra-ui/react';
 import moment from 'moment';
 
 export interface DayWeatherProps {
+    /**
+     * JavaScript Date object in default string format
+     */
     date: string,
-    temp: string,
-    humidity: string,
-    wind: string,
+    /**
+     * By celcius degree
+     * @example
+     * -1.98
+     */
+    temp: number,
+    /**
+     * Percentage
+     * @example
+     * 98
+     */
+    humidity: number,
+    /**
+     * meter per second
+     * @example
+     * 3.05
+     */
+    wind: number,
+    /**
+     * Weather type
+     * @example
+     * 'Snow'
+     */
     weather: string,
+    /**
+     * description of weather
+     * @example
+     * 'light rain'
+     */
     description: string
 }
+
+/**
+ * Component display weather info of one day
+ * @param {DayWeatherProps} param0 weather data object
+ * @param {number} size Size of the weather icon
+ * @param {string} cityName Name of the city
+ */
 
 const DayWeather = ({ date, temp, weather, description }: DayWeatherProps, size: number, cityName: string) => {
     let weatherIcon;
@@ -50,7 +85,7 @@ const DayWeather = ({ date, temp, weather, description }: DayWeatherProps, size:
                     {weatherIcon}
                 </Box>
                 <Text width={{ base: '100px', md: 'auto' }} align='right'
-                    pr={{ base: '4', md: '0' }} fontSize='2xl'>{parseInt(temp)}°C</Text>
+                    pr={{ base: '4', md: '0' }} fontSize='2xl'>{Math.round(temp)}°C</Text>
                 <Text
                     display={{ base: 'none', sm: 'block' }}
                     pr={{ base: '4', md: '0' }}>{description}</Text>

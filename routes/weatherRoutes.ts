@@ -3,6 +3,14 @@ import { Router, Request, Response } from 'express';
 import { secondsToDateTime } from '../utils';
 
 const weatherRoute = Router();
+
+/**
+ * Route return weather data for a given city.
+ * @name get/api/weather
+ * @function 
+ * @memberof module:routers/weatherRoutes
+ * @param req.query.city {String} The city name.
+ */
 weatherRoute.get(
     '/api/weather',
     async (req: Request, res: Response) => {

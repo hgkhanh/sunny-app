@@ -5,6 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchWeather, clearWeatherData } from '../actions';
 
+/**
+ * Main Component for route /Dashboard
+ * Show weather of cities user are subscribed to.
+ * This Route is hidden if user are not logged in
+ */
 const Dashboard = () => {
     const [isLoading, setLoading] = useState(true);
     const [isError, setError] = useState(true);
@@ -51,9 +56,6 @@ const Dashboard = () => {
         }
         return (<Weather />);
     }
-
-
-
 
     return (
         <Flex

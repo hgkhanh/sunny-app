@@ -5,10 +5,12 @@ import Weather from '../WeatherWidget/Weather';
 import { useDispatch } from 'react-redux';
 import { clearWeatherData } from '../../actions';
 
-export interface IHome {
-}
+/**
+ * Main Component for route '/'
+ * Show a search bar to search for weather data in a city
+ */
 
-const Home: React.FC<IHome> = () => {
+const Home = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
