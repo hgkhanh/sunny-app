@@ -8,7 +8,7 @@ import Mongoose from './services/mongoose';
 require('dotenv').config();
 
 const app = express();
-const port = 5000;
+let port = process.env.PORT || 5000;
 
 Mongoose.init();
 Passport.init(app);
