@@ -10,6 +10,7 @@ A MERN stack weather app allow you to search for weather forecast of a city. Log
 - User can login to Google. When logged in, user can follow cities to save them in their Dashboard.
 
 # Technology, libraries
+- MERN stack
 - TypeScripts
 - Redux, Thunk
 - PassportJS
@@ -29,11 +30,11 @@ npm install
 npm install --prefix client
 ```
 
-Create .env file with this format. Weather API key can be obtained at [openweathermap.org](https://openweathermap.org/). Location API key can be obtained at [locationiq.com](https://locationiq.com/)
+Create .env file with this format. Weather API key can be obtained at [openweathermap.org](https://openweathermap.org/). Location API key can be obtained at [locationiq.com](https://locationiq.com/). Setup your Google App at [Google Developer Console](https://console.developers.google.com/). Create and get MongoDB URI at [cloud.mongodb.com](https://cloud.mongodb.com/).
 ```
 GOOGLE_CLIENT_ID=<your_id>
 GOOGLE_CLIENT_SECRET=<your_secret>
-MONGO_URI=mongodb+srv://<your_username>:<your_password>@<your_cluster_url>/main?retryWrites=true&w=majority
+MONGO_URI=<your_mongodb_uri>
 COOKIE_KEY=<a_random_string>
 WEATHER_API_URL=https://api.openweathermap.org/data/2.5/onecall
 WEATHER_API_KEY=<your_api_key>
