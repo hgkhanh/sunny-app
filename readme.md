@@ -29,6 +29,18 @@ npm install
 npm install --prefix client
 ```
 
+Create .env file with this format. Weather API key can be obtained at [openweathermap.org](https://openweathermap.org/). Location API key can be obtained at [locationiq.com](https://locationiq.com/)
+```
+GOOGLE_CLIENT_ID=<your_id>
+GOOGLE_CLIENT_SECRET=<your_secret>
+MONGO_URI=mongodb+srv://<your_username>:<your_password>@<your_cluster_url>/main?retryWrites=true&w=majority
+COOKIE_KEY=<a_random_string>
+WEATHER_API_URL=https://api.openweathermap.org/data/2.5/onecall
+WEATHER_API_KEY=<your_api_key>
+LOCATION_IQ_URL=https://eu1.locationiq.com/v1/search.php
+LOCATION_IQ_KEY=<your_api_key>
+```
+
 Run Express server
 ```
 npm run start
