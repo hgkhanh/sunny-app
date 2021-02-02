@@ -14,6 +14,7 @@ const weatherRoute = Router();
 weatherRoute.get(
     '/api/weather',
     async (req: Request, res: Response) => {
+        console.log('weatherRoute');
         try {
             const cityName = req.query.city;
             // Query Location IQ for City LAT and LONG
@@ -46,7 +47,10 @@ weatherRoute.get(
                         city: cityName.toLowerCase(),
                         daily: dailyData
                     }
-                    return res.status(200).json(result);
+                    return res.status(200).json({
+                        status: 'success',
+                        data: result
+                    });
                 }
             }
         } catch (error) {

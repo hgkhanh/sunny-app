@@ -20,7 +20,7 @@ import { Fragment, useEffect } from 'react';
 
 const Weather = () => {
     const weather = useSelector((state: any) => state.weather);
-    if (weather.status === 'error') {
+    if (weather && weather.status === 'error') {
         return (
             <Text>
                 {weather.data}
@@ -30,7 +30,7 @@ const Weather = () => {
    
     return (
         <Fragment>
-            { weather.data && weather.data.length > 0 &&
+            { weather && weather.data && weather.data.length > 0 &&
                 weather.data.map((data: CityWeatherData) => (
                     <Box m={4} key={data.city}>
                         <City data={data} />

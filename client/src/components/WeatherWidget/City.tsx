@@ -1,7 +1,7 @@
 import {
     useBreakpointValue,
     IconButton, Heading,
-    Flex, Tooltip
+    Flex, Tooltip, useColorMode
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaBell } from 'react-icons/fa';
@@ -23,6 +23,7 @@ export interface CityWeatherData {
  */
 const City = ({ data }: { data: CityWeatherData }) => {
     const dispatch = useDispatch();
+    const { colorMode } = useColorMode();
     const user = useSelector((state: any) => state.user);
     const size = useBreakpointValue({ base: 0.3, md: 0.7 }) || 0.3;
 
@@ -84,7 +85,7 @@ const City = ({ data }: { data: CityWeatherData }) => {
                         {data && data.daily &&
                             data.daily.slice(0, 5).map(
                                 (day: DayWeatherProps) =>
-                                    DayWeather(day, size, data.city.toLowerCase())
+                                    DayWeather(day, data.city.toLowerCase(), colorMode, size)
                             )
                         }
                     </Flex>

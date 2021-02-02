@@ -5,11 +5,7 @@ import followRoutes from './routes/followRoutes';
 import Passport from './services/passport';
 import Mongoose from './services/mongoose';
 
-if (process.env.NODE_ENV) {
-    require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
-} else {
-    require('dotenv').config();
-}
+require('dotenv').config();
 
 const app = express();
 const port = 5000;

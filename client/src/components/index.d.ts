@@ -42,3 +42,4 @@ declare module 'weather-styled-icon' {
         backgroundColor?: string,
     }
 }
+declare module 'moxios';

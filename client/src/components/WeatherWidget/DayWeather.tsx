@@ -2,7 +2,7 @@ import {
     WeatherThemeProvider,
     Sunny, Cloudy, Rain, Snow
 } from 'weather-styled-icon';
-import { useColorMode, Text, Box, Flex } from '@chakra-ui/react';
+import { Text, Box, Flex } from '@chakra-ui/react';
 import moment from 'moment';
 
 export interface DayWeatherProps {
@@ -49,9 +49,8 @@ export interface DayWeatherProps {
  * @param {string} cityName Name of the city
  */
 
-const DayWeather = ({ date, temp, weather, description }: DayWeatherProps, size: number, cityName: string) => {
+const DayWeather = ({ date, temp, weather, description }: DayWeatherProps, cityName: string, colorMode: string = 'light', size?: number) => {
     let weatherIcon;
-    const { colorMode } = useColorMode();
     const myCustomTheme = {
         backgroundColor: colorMode === 'light' ? '#ffffff' : '#1a202c',
     };

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 
 import Header from './components/Header';
